@@ -7,25 +7,25 @@
 
 typedef struct violao
 {
-	char nome[TAM];			//nome do viol„o
-	char tipo_madeira[TAM]; //tipo da madeira do viol„o
-	char corda[TAM];		//tipo da corda do viol„o
-	float preco;			//preÁo do viol„o
-	int ano_fab;			//ano de fabricaÁ„o do viol„o
-	int id;					//identificador para a busca do viol„o
+	char nome[TAM];			//nome do viol√£o
+	char tipo_madeira[TAM]; //tipo da madeira do viol√£o
+	char corda[TAM];		//tipo da corda do viol√£o
+	float preco;			//pre√ßo do viol√£o
+	int ano_fab;			//ano de fabrica√ß√£o do viol√£o
+	int id;					//identificador para a busca do viol√£o
 } Violao;
 
-int cadastrarViolao(int vID);	  // cadastro de Viol„o
-int validarViolao(int id);		  // verifica se o viol„o ja esta cadastrado ou n„o
-Violao criarViolao(int id);		  // cria o viol„o
-Violao consultarViolao(int id);	  // consultar de violıes
-int editarViolao(Violao att);	  // editar violıes cadastrados na memÛria
-int alterarViolao(Violao old);	  //editar violıes cadastrados no arquivo
-int excluirViolao(int id); //excluir violıes
+int cadastrarViolao(int vID);	  // cadastro de Viol√£o
+int validarViolao(int id);		  // verifica se o viol√£o ja esta cadastrado ou n√£o
+Violao criarViolao(int id);		  // cria o viol√£o
+Violao consultarViolao(int id);	  // consultar de viol√µes
+int editarViolao(Violao att);	  // editar viol√µes cadastrados na mem√≥ria
+int alterarViolao(Violao old);	  //editar viol√µes cadastrados no arquivo
+int excluirViolao(int id); //excluir viol√µes
 
 void menu();
 
-//FunÁ„o main
+//Fun√ß√£o main
 
 int main()
 {
@@ -34,7 +34,7 @@ int main()
 }
 /************************************/
 
-//FunÁ„o para cadastrar viol„o
+//Fun√ß√£o para cadastrar viol√£o
 int cadastrarViolao(int vID)
 {
 
@@ -45,14 +45,14 @@ int cadastrarViolao(int vID)
 		printf("NAO FOI POSSIVEL ABRIR O ARQUIVO\n");
 
 	if (validarViolao(vID) == 0)
-	{													  //verifica se o id do viol„o ja esta cadastrado
-		fwrite(&violao, sizeof(Violao), 1, ptrArqViolao); //se n„o estiver escreve no arquivo
+	{													  //verifica se o id do viol√£o ja esta cadastrado
+		fwrite(&violao, sizeof(Violao), 1, ptrArqViolao); //se n√£o estiver escreve no arquivo
 		fclose(ptrArqViolao);
 		return 1;
 	}
 
 	else
-	{ //se estiver n„o escreve
+	{ //se estiver n√£o escreve
 		fclose(ptrArqViolao);
 		return 0;
 	}
@@ -60,7 +60,7 @@ int cadastrarViolao(int vID)
 
 /*****************************************************************/
 
-//FunÁ„o para verificar se o viol„o j· est· cadastrado ou n„o
+//Fun√ß√£o para verificar se o viol√£o j√° est√° cadastrado ou n√£o
 
 int validarViolao(int id)
 {
@@ -69,7 +69,7 @@ int validarViolao(int id)
 
 	ptrArqViolao = fopen("violao.txt", "rb");
 	if (ptrArqViolao == NULL)
-		printf("\nN√O FOI POSSÕVEL ABRIR O ARQUIVO \n");
+		printf("\nN√ÉO FOI POSS√çVEL ABRIR O ARQUIVO \n");
 
 	while (!feof(ptrArqViolao))
 	{
@@ -93,7 +93,7 @@ Violao criarViolao(int id)
 	Violao novo_violao;
 	novo_violao.id = id;
 
-	printf("Insira os dados do Viol„o !");
+	printf("Insira os dados do Viol√£o !");
 	printf("\n Id: %d\n", novo_violao.id);
 	printf("\n Nome: ");
 	scanf("%s", novo_violao.nome);
@@ -103,7 +103,7 @@ Violao criarViolao(int id)
 	scanf("%s", novo_violao.corda);
 	printf("\n Preco: ");
 	scanf("%f", &novo_violao.preco);
-	printf("\n Ano de F·brica: ");
+	printf("\n Ano de F√°brica: ");
 	scanf("%d", &novo_violao.ano_fab);
 
 	return novo_violao;
@@ -111,7 +111,7 @@ Violao criarViolao(int id)
 
 /*****************************************************************/
 
-//FunÁ„o de consulta dos violıes cadastrados
+//Fun√ß√£o de consulta dos viol√µes cadastrados
 
 Violao consultarViolao(int id)
 {
@@ -122,7 +122,7 @@ Violao consultarViolao(int id)
 	ptrArqViolao = fopen("violao.txt", "rb");
 	if (ptrArqViolao == NULL)
 	{
-		printf("N√O FOI POSSÕVEL ABRIR O ARQUIVO, N√O EXISTE VIOL√O CADASTRADO \n");
+		printf("N√ÉO FOI POSS√çVEL ABRIR O ARQUIVO, N√ÉO EXISTE VIOL√ÉO CADASTRADO \n");
 	}
 	while (!feof(ptrArqViolao) && violao_encontrado == 0)
 	{
@@ -133,10 +133,10 @@ Violao consultarViolao(int id)
 	}
 
 	if (violao_encontrado == 1)
-		printf("\nNome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", violao.nome, violao.id, violao.tipo_madeira, violao.corda, violao.preco, violao.ano_fab);
+		printf("\nNome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", violao.nome, violao.id, violao.tipo_madeira, violao.corda, violao.preco, violao.ano_fab);
 	else
 	{
-		printf(" ESSE VIOL√O N√O FOI CADASTRADO\n\n");
+		printf(" ESSE VIOL√ÉO N√ÉO FOI CADASTRADO\n\n");
 		fclose(ptrArqViolao);
 		
 	}
@@ -146,7 +146,7 @@ Violao consultarViolao(int id)
 }
 
 /*****************************************************************/
-//Essa funÁ„o solicita o campo a ser alterado pelo usuario
+//Essa fun√ß√£o solicita o campo a ser alterado pelo usuario
 
 int editarViolao(Violao old)
 {
@@ -154,12 +154,12 @@ int editarViolao(Violao old)
 	FILE *ptrArqViolao;
 	int op;
 
-	printf("\n-----Escolha a opÁ„o que deseja alterar:-----\n");
+	printf("\n-----Escolha a op√ß√£o que deseja alterar:-----\n");
 	printf("\n 1: Alterar Nome");
 	printf("\n 2: Alterar o Tipo de Madeira");
 	printf("\n 3: Alterar Tipo de Corda");
-	printf("\n 4: Alterar PreÁo");
-	printf("\n 5: Alterar Ano de FabricaÁ„o");
+	printf("\n 4: Alterar Pre√ßo");
+	printf("\n 5: Alterar Ano de Fabrica√ß√£o");
 	printf("\n\n\n Digite o numero correspondente a opcao: ");
 	scanf("%d", &op);
 	system("cls");
@@ -170,51 +170,51 @@ int editarViolao(Violao old)
 		printf("Digite um novo nome: ");
 		scanf("%s", old.nome);
 		alterarViolao(old);
-		printf("Nome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
+		printf("Nome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
 		break;
 
 	case 2:
 		printf("Digite um novo tipo de madeira: ");
 		scanf("%s", old.tipo_madeira);
 		alterarViolao(old);
-		printf("Nome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
+		printf("Nome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
 		break;
 
 	case 3:
 		printf("Digite um novo tipo de corda: ");
 		scanf("%s", old.corda);
 		alterarViolao(old);
-		printf("Nome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
+		printf("Nome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
 
 		break;
 
 	case 4:
 
-		printf("Digite um novo preÁo: ");
+		printf("Digite um novo pre√ßo: ");
 		scanf("%f", &old.preco);
 		alterarViolao(old);
-		printf("Nome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
+		printf("Nome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
 
 		break;
 
 	case 5:
 
-		printf("Digite um novo ano de fabricaÁ„o: ");
+		printf("Digite um novo ano de fabrica√ß√£o: ");
 		scanf("%d", &old.ano_fab);
 		alterarViolao(old);
-		printf("Nome do viol„o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n PreÁo: %f \n Ano de fabricaÁ„o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
+		printf("Nome do viol√£o: %s   ID: %d \n Tipo de Madeira: %s \n Corda: %s \n Pre√ßo: %f \n Ano de fabrica√ß√£o: %d \n\n", old.nome, old.id, old.tipo_madeira, old.corda, old.preco, old.ano_fab);
 
 		break;
 
 	default:
-		printf("ERRO!! OP«√O N√O ENCONTRADA, POR FAVOR INSIRA UMA OP«√O VALIDA \n");
+		printf("ERRO!! OP√á√ÉO N√ÉO ENCONTRADA, POR FAVOR INSIRA UMA OP√á√ÉO VALIDA \n");
 		system("pause");
 		break;
 	}
 }
 
 /*****************************************************************/
-//Essa funÁ„o altera a variavel do tipo Viol„o encontrada no arquivo
+//Essa fun√ß√£o altera a variavel do tipo Viol√£o encontrada no arquivo
 int alterarViolao(Violao att)
 {
 	Violao violao_old;
@@ -223,7 +223,7 @@ int alterarViolao(Violao att)
 	FILE *ptrArqViolao;
 
 	if ((ptrArqViolao = fopen("violao.txt", "rb+")) == NULL)
-		printf("\nN√O FOI POSSÕVEL ABRIR O ARQUIVO\n");
+		printf("\nN√ÉO FOI POSS√çVEL ABRIR O ARQUIVO\n");
 
 	while (!feof(ptrArqViolao) && violao_encontrado == 0)
 	{
@@ -237,14 +237,14 @@ int alterarViolao(Violao att)
 
 	fseek(ptrArqViolao, ((nReg - 1) * sizeof(Violao)), SEEK_SET);
 	int codViolao = fwrite(&violao_old, sizeof(Violao), 1, ptrArqViolao);
-	printf("\n Viol„o Registrado \n");
+	printf("\n Viol√£o Registrado \n");
 	system("pause");
 	fclose(ptrArqViolao);
 }
 
 /*****************************************************************/
 
-//FunÁ„o para excluir violıes
+//Fun√ß√£o para excluir viol√µes
 int excluirViolao(int id)
 {
 	Violao violao;
@@ -255,7 +255,7 @@ int excluirViolao(int id)
 	newptrArqViolao = fopen("newViolao.txt", "ab");
 	if (ptrArqViolao == NULL)
 	{
-		printf("N√O FOI POSSÕVEL ABRIR O ARQUIVO, N√O EXISTE VIOL√O CADASTRADO \n");
+		printf("N√ÉO FOI POSS√çVEL ABRIR O ARQUIVO, N√ÉO EXISTE VIOL√ÉO CADASTRADO \n");
 	}
 	while (!feof(ptrArqViolao) )
 	{
@@ -290,12 +290,12 @@ void menu()
 	printf("\n-----------------------------------------------------------------------------------------------------\t");
 	printf("\n\t\t\t\t\t   SISTEMA DE REGISTRO \n");
 	printf("\n\t\t\t\t\t     GIANNINI	 STORE  \n");
-	printf("\n\n->Ao cadastrar: O preÁo do produto deve se utilizar ',' (vÌrgula), pois est· no formato pt-BR\n");
+	printf("\n\n->Ao cadastrar: O pre√ßo do produto deve se utilizar ',' (v√≠rgula), pois est√° no formato pt-BR\n");
 	printf("\n---------------------------------------------------------------------------------------------------\t\n");
-	printf("\n 1: Cadastrar Viol„o");
-	printf("\n 2: Consultar Viol„o");
-	printf("\n 3: Alterar Dados do Viol„o");
-	printf("\n 4: Excluir Registro do Viol„o");
+	printf("\n 1: Cadastrar Viol√£o");
+	printf("\n 2: Consultar Viol√£o");
+	printf("\n 3: Alterar Dados do Viol√£o");
+	printf("\n 4: Excluir Registro do Viol√£o");
 	printf("\n 0: Sair");
 	printf("\n\n\n Digite o numero correspondente a opcao: ");
 	scanf("%d", &op);
@@ -304,32 +304,32 @@ void menu()
 	switch (op)
 	{
 	case 1:
-		printf("\n-----Cadastrar Viol„o-----\n");
-		printf("\nDigite o ID do Viol„o:\t");
+		printf("\n-----Cadastrar Viol√£o-----\n");
+		printf("\nDigite o ID do Viol√£o:\t");
 		scanf("%d", &vID);
 		cadastrarViolao(vID);
 		system("pause");
 		break;
 
 	case 2:
-		printf("\n-----Consultar Cadastro do Viol„o-----\n");
-		printf("\nDigite o ID do Viol„o:\t");
+		printf("\n-----Consultar Cadastro do Viol√£o-----\n");
+		printf("\nDigite o ID do Viol√£o:\t");
 		scanf("%d", &vID);
 		consultarViolao(vID);
 		system("pause");
 		break;
 
 	case 3:
-		printf("\n-----Alterar Dados do Viol„o-----\n");
-		printf("\nDigite o ID do Viol„o:\t");
+		printf("\n-----Alterar Dados do Viol√£o-----\n");
+		printf("\nDigite o ID do Viol√£o:\t");
 		scanf("%d", &vID);
 		editarViolao(consultarViolao(vID));
 		system("pause");
 		break;
 
 	case 4:
-		printf("\n-----Excluir Registro do Viol„o-----\n");
-		printf("\nDigite o ID do Viol„o:\t");
+		printf("\n-----Excluir Registro do Viol√£o-----\n");
+		printf("\nDigite o ID do Viol√£o:\t");
 		scanf("%d", &vID);
 		excluirViolao(consultarViolao(vID).id);
 		system("pause");
@@ -340,7 +340,7 @@ void menu()
 		break;
 
 	default:
-		printf("ERRO!! OP«√O N√O ENCONTRADA, POR FAVOR INSIRA UMA OP«√O VALIDA \n");
+		printf("ERRO!! OP√á√ÉO N√ÉO ENCONTRADA, POR FAVOR INSIRA UMA OP√á√ÉO VALIDA \n");
 		system("pause");
 		break;
 	}
